@@ -2,17 +2,21 @@
 
 Welcome to **Indicator-Library**, maintained by the **Technical Department, Finance Society, NITJ**! We welcome contributions from students, developers, and quantitative finance enthusiasts.
 
-Whether you are fixing a bug, improving documentation, or implementing a new technical indicator, this guide will help you get started.
+> 🌐 **Interactive Student Guide & Web Docs**: Check out our visual, interactive student guide for contributing: [docs/index.html](docs/index.html) (or on GitHub Pages at [financesociety-nitj.github.io/Indicator-Library](https://financesociety-nitj.github.io/Indicator-Library/)).
+
+Whether you are fixing a bug, improving documentation, or implementing a new technical indicator (e.g. RSI, MACD, Bollinger Bands), this guide will help you get started.
 
 ---
 
 ## 📋 Table of Contents
 
+- [Interactive Web Guide](#-interactive-web-guide)
 - [Code of Conduct](#-code-of-conduct)
 - [How to Contribute](#-how-to-contribute)
   - [Reporting Issues](#reporting-issues)
   - [Suggesting Features / Indicators](#suggesting-features--indicators)
   - [Pull Requests](#pull-requests)
+
 - [Local Development Setup](#-local-development-setup)
 - [Guidelines for Adding New Indicators](#-guidelines-for-adding-new-indicators)
 - [Coding & Quality Standards](#-coding--quality-standards)

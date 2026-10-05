@@ -2,6 +2,8 @@
 
 Open Source Library of Indicators for Technical Dept., Finance Society, NITJ.
 
+> 🎓 **Students & First-Time Contributors**: Want to implement an indicator (like RSI, MACD, Bollinger Bands, ATR) and learn open source? Read our interactive [Student Contributor Guide & API Docs](docs/index.html) (Hosted via GitHub Pages: [financesociety-nitj.github.io/Indicator-Library](https://financesociety-nitj.github.io/Indicator-Library/)).
+
 ---
 
 ## 📈 Raw Stock Market Data API (`yfinance`)
