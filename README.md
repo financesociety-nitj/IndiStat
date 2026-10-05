@@ -173,3 +173,9 @@ Run the test suite using `pytest`:
 ```bash
 pytest
 ```
+
+---
+
+## 🤝 Contributing
+
+Contributions are warmly welcomed! Please read our [Contributing Guide](CONTRIBUTING.md) for details on code style, indicator guidelines, and submitting pull requests.
