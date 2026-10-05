@@ -1,10 +1,10 @@
-# Indicator-Library
+# IndiStat
 
-Open Source Library of Indicators for Technical Dept., Finance Society, NITJ.
+Open Source Library of Quantitative Indicators for Technical Dept., Finance Society, NITJ.
 
 [![CI](https://github.com/financesociety-nitj/IndiStat/actions/workflows/ci.yml/badge.svg)](https://github.com/financesociety-nitj/IndiStat/actions/workflows/ci.yml)
 
-> 🎓 **Students & First-Time Contributors**: Want to implement an indicator (like RSI, MACD, Bollinger Bands, ATR) and learn open source? Read our interactive [Student Contributor Guide & API Docs](docs/index.html) (Hosted via GitHub Pages: [financesociety-nitj.github.io/Indicator-Library](https://financesociety-nitj.github.io/Indicator-Library/)).
+> 🎓 **Students & First-Time Contributors**: Want to implement an indicator (like RSI, MACD, Bollinger Bands, ATR) and learn open source? Read our interactive [Student Contributor Guide & API Docs](docs/index.html) (Hosted via GitHub Pages: [financesociety-nitj.github.io/IndiStat](https://financesociety-nitj.github.io/IndiStat/)).
 
 ---
 
@@ -19,10 +19,11 @@ This module provides a clean, standardized Python API for retrieving **pure, una
 Clone the repository and install the dependencies:
 
 ```bash
-git clone https://github.com/financesociety-nitj/Indicator-Library.git
-cd Indicator-Library
+git clone https://github.com/financesociety-nitj/IndiStat.git
+cd IndiStat
 pip install -r requirements.txt
 ```
+
 
 ---
 

@@ -3,9 +3,9 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "indicator-library"
+name = "indistat"
 version = "0.1.0"
-description = "Open Source Library of Indicators for Technical Dept., Finance Society, NITJ"
+description = "IndiStat: Open Source Library of Quantitative Indicators for Technical Dept., Finance Society, NITJ"
 readme = "README.md"
 authors = [
     { name = "Kartik Sirohi", email = "99896785+sirohikartik@users.noreply.github.com" }

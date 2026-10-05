@@ -1,6 +1,7 @@
 """
-Indicator Library - Open Source Library of Indicators for Technical Dept., Finance Society, NITJ.
+IndiStat - Open Source Library of Quantitative Indicators for Technical Dept., Finance Society, NITJ.
 """
+
 
 from .data import (
     OHLCV_COLUMNS,
