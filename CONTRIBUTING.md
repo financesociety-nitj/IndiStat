@@ -21,6 +21,7 @@ Whether you are fixing a bug, improving documentation, or implementing a new tec
 - [Guidelines for Adding New Indicators](#-guidelines-for-adding-new-indicators)
 - [Coding & Quality Standards](#-coding--quality-standards)
 - [Testing](#-testing)
+- [Continuous Integration (CI) Checks](#-continuous-integration-ci-checks)
 - [Git Workflow & Commit Guidelines](#-git-workflow--commit-guidelines)
 
 ---
@@ -176,7 +177,23 @@ Ensure all tests pass with zero failures.
 
 ---
 
+## 🤖 Continuous Integration (CI) Checks
+
+Every Pull Request submitted to `main` automatically triggers our GitHub Actions CI pipeline:
+
+- **Multi-Version Testing Matrix**: Your code is built and tested against **Python 3.9, 3.10, 3.11, and 3.12** on Linux (`ubuntu-latest`).
+- **Automated `pytest`**: The full test suite in `tests/` runs on every commit pushed to your PR branch.
+- **Passing Requirement**: All matrix checks must pass (✅ green checkmark) before your PR can be approved and merged.
+- **Debugging CI Failures**:
+  1. If any check fails (❌), click **Details** next to the failing check in your PR.
+  2. Inspect the pytest failure trace and error messages.
+  3. Reproduce and fix the issue locally using `pytest`.
+  4. Commit and push the fix to your branch. GitHub Actions will automatically re-run.
+
+---
+
 ## 🌿 Git Workflow & Commit Guidelines
+
 
 ### Branch Naming
 
