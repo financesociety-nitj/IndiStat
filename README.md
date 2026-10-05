@@ -2,6 +2,8 @@
 
 Open Source Library of Indicators for Technical Dept., Finance Society, NITJ.
 
+[![CI](https://github.com/financesociety-nitj/IndiStat/actions/workflows/ci.yml/badge.svg)](https://github.com/financesociety-nitj/IndiStat/actions/workflows/ci.yml)
+
 > 🎓 **Students & First-Time Contributors**: Want to implement an indicator (like RSI, MACD, Bollinger Bands, ATR) and learn open source? Read our interactive [Student Contributor Guide & API Docs](docs/index.html) (Hosted via GitHub Pages: [financesociety-nitj.github.io/Indicator-Library](https://financesociety-nitj.github.io/Indicator-Library/)).
 
 ---
