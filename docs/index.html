@@ -594,12 +594,13 @@
         <li><a href="#step-5"><span class="nav-num">10.</span> 5. Write Unit Tests</a></li>
         <li><a href="#step-6"><span class="nav-num">11.</span> 6. Commit & Push</a></li>
         <li><a href="#step-7"><span class="nav-num">12.</span> 7. Open Pull Request</a></li>
+        <li><a href="#step-8"><span class="nav-num">13.</span> 8. Automated CI Checks</a></li>
       </ul>
 
       <div class="sidebar-section-title">Reference</div>
       <ul class="sidebar-nav">
-        <li><a href="#backlog"><span class="nav-num">13.</span> Indicator Ideas Backlog</a></li>
-        <li><a href="#faq"><span class="nav-num">14.</span> Common Pitfalls & FAQ</a></li>
+        <li><a href="#backlog"><span class="nav-num">14.</span> Indicator Ideas Backlog</a></li>
+        <li><a href="#faq"><span class="nav-num">15.</span> Common Pitfalls & FAQ</a></li>
       </ul>
     </aside>
 
@@ -1039,10 +1040,78 @@ Implemented the Relative Strength Index (RSI) indicator using Wilder's exponenti
 
           <p>Click <strong>Create pull request</strong>! 🎉 A maintainer will review your code, provide constructive feedback, or merge it!</p>
         </div>
+
+        <!-- Step 8 -->
+        <div class="step-card" id="step-8">
+          <div class="step-header">
+            <span class="step-pill" style="background: linear-gradient(135deg, #10b981, #34d399);">Step 8</span>
+            <h3 class="step-title" style="margin: 0;">Automated CI Checks (GitHub Actions)</h3>
+          </div>
+          <p>
+            As soon as your PR is submitted, our automated <strong>Continuous Integration (CI)</strong> workflow triggers automatically. You will see a box near the bottom of your PR page listing running checks:
+          </p>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Job Name</th>
+                  <th>Runner OS</th>
+                  <th>Purpose</th>
+                  <th>Expected Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>Test (Python 3.9)</code></td>
+                  <td><code>ubuntu-latest</code></td>
+                  <td>Runs full <code>pytest</code> test suite</td>
+                  <td><span style="color: #34d399; font-weight: 700;">✓ Passing</span></td>
+                </tr>
+                <tr>
+                  <td><code>Test (Python 3.10)</code></td>
+                  <td><code>ubuntu-latest</code></td>
+                  <td>Runs full <code>pytest</code> test suite</td>
+                  <td><span style="color: #34d399; font-weight: 700;">✓ Passing</span></td>
+                </tr>
+                <tr>
+                  <td><code>Test (Python 3.11)</code></td>
+                  <td><code>ubuntu-latest</code></td>
+                  <td>Runs full <code>pytest</code> test suite</td>
+                  <td><span style="color: #34d399; font-weight: 700;">✓ Passing</span></td>
+                </tr>
+                <tr>
+                  <td><code>Test (Python 3.12)</code></td>
+                  <td><code>ubuntu-latest</code></td>
+                  <td>Runs full <code>pytest</code> test suite</td>
+                  <td><span style="color: #34d399; font-weight: 700;">✓ Passing</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout callout-success">
+            <div class="callout-title">✅ Green Means Ready for Review</div>
+            When all 4 checkmarks turn green (<em>"All checks have passed"</em>), your PR is verified and ready for the Finance Society maintainers to review and merge into the codebase!
+          </div>
+
+          <div class="callout callout-warning">
+            <div class="callout-title">❌ What if a CI Check Fails?</div>
+            Don't worry! Fixing test failures is a core part of real-world development:
+            <ol style="margin-top: 0.5rem; margin-bottom: 0;">
+              <li>Click the <strong>Details</strong> link next to the red failing job.</li>
+              <li>Read the <code>pytest</code> output and traceback to find which test assertion failed.</li>
+              <li>Fix the bug locally in your editor and re-run <code>pytest</code> on your laptop.</li>
+              <li>Commit and push the fix: <code>git commit -am "fix: resolve test assertion" && git push</code></li>
+              <li>GitHub Actions will automatically restart and re-run all checks on your updated code!</li>
+            </ol>
+          </div>
+        </div>
       </section>
 
       <!-- Section: Indicators Backlog for Students -->
       <section id="backlog">
+
         <h2>💡 Indicators You Can Claim & Implement</h2>
         <p>
           Pick an indicator below that is not yet implemented, open an issue on GitHub to claim it, and build your PR!
