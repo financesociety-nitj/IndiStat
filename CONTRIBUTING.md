@@ -1,8 +1,8 @@
-# Contributing to Indicator-Library
+# Contributing to IndiStat
 
-Welcome to **Indicator-Library**, maintained by the **Technical Department, Finance Society, NITJ**! We welcome contributions from students, developers, and quantitative finance enthusiasts.
+Welcome to **IndiStat**, maintained by the **Technical Department, Finance Society, NITJ**! We welcome contributions from students, developers, and quantitative finance enthusiasts.
 
-> 🌐 **Interactive Student Guide & Web Docs**: Check out our visual, interactive student guide for contributing: [docs/index.html](docs/index.html) (or on GitHub Pages at [financesociety-nitj.github.io/Indicator-Library](https://financesociety-nitj.github.io/Indicator-Library/)).
+> 🌐 **Interactive Student Guide & Web Docs**: Check out our visual, interactive student guide for contributing: [docs/index.html](docs/index.html) (or on GitHub Pages at [financesociety-nitj.github.io/IndiStat](https://financesociety-nitj.github.io/IndiStat/)).
 
 Whether you are fixing a bug, improving documentation, or implementing a new technical indicator (e.g. RSI, MACD, Bollinger Bands), this guide will help you get started.
 
@@ -36,7 +36,7 @@ We are committed to providing a friendly, safe, and welcoming environment for al
 
 ### Reporting Issues
 
-Before opening a new issue, please check the [existing issues](https://github.com/financesociety-nitj/Indicator-Library/issues) to avoid duplicates. When opening an issue, provide:
+Before opening a new issue, please check the [existing issues](https://github.com/financesociety-nitj/IndiStat/issues) to avoid duplicates. When opening an issue, provide:
 - A clear description of the problem or bug.
 - Steps to reproduce, including code snippet and ticker symbol.
 - Expected vs actual behavior.
@@ -58,14 +58,14 @@ If you would like to request or propose a new indicator (e.g., RSI, MACD, Bollin
 Fork the repository on GitHub, then clone your fork locally:
 
 ```bash
-git clone https://github.com/<your-username>/Indicator-Library.git
-cd Indicator-Library
+git clone https://github.com/<your-username>/IndiStat.git
+cd IndiStat
 ```
 
 Add the upstream remote:
 
 ```bash
-git remote add upstream https://github.com/financesociety-nitj/Indicator-Library.git
+git remote add upstream https://github.com/financesociety-nitj/IndiStat.git
 ```
 
 ### 2. Set Up a Virtual Environment
@@ -225,4 +225,4 @@ We encourage Conventional Commits:
 
 ---
 
-Thank you for contributing to the **Finance Society, NITJ Indicator-Library**! 🚀
+Thank you for contributing to **IndiStat** (Finance Society, NITJ)! 🚀

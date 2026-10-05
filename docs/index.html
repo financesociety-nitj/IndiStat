@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Contributor Guide & API Docs | Finance Society NITJ Indicator-Library</title>
+  <title>Student Contributor Guide & API Docs | Finance Society NITJ IndiStat</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -551,14 +551,14 @@
   <header>
     <a href="#" class="brand">
       <span class="logo-badge">NITJ</span>
-      <span class="brand-title">Finance Society <span class="brand-sub">Indicator Library</span></span>
+      <span class="brand-title">Finance Society <span class="brand-sub">IndiStat</span></span>
     </a>
     <div class="header-links">
       <a href="#quickstart" class="header-link">Quickstart</a>
       <a href="#data-api" class="header-link">Data API</a>
       <a href="#step-by-step" class="header-link">PR Guide</a>
       <a href="#backlog" class="header-link">Indicators Backlog</a>
-      <a href="https://github.com/financesociety-nitj/Indicator-Library" target="_blank" rel="noopener noreferrer" class="btn-github">
+      <a href="https://github.com/financesociety-nitj/IndiStat" target="_blank" rel="noopener noreferrer" class="btn-github">
         <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
           <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
         </svg>
@@ -612,10 +612,11 @@
         <div class="hero-badge">🚀 Student Contributor Program • Open Source 2026</div>
         <h1>Learn Open Source by Building Financial Indicators</h1>
         <p>
-          Welcome to the official <strong>Contributor Guide & Documentation</strong> for NITJ's Finance Society Indicator Library.
+          Welcome to the official <strong>Contributor Guide & Documentation</strong> for NITJ's Finance Society <strong>IndiStat</strong> library.
           Here, you will learn the end-to-end Git & GitHub workflow used by software engineers and quant developers worldwide:
           from forking and branching, to writing pandas-based technical indicators, testing with pytest, and submitting production-ready Pull Requests (PRs).
         </p>
+
       </section>
 
       <!-- Section: Why contribute -->
@@ -735,7 +736,7 @@ python -m indicator_library TSLA --start 2024-01-01 --end 2024-01-05 --format re
             You cannot push directly to the main organization repository. Instead, you create a personal copy called a <strong>Fork</strong>.
           </p>
           <ol>
-            <li>Go to <a href="https://github.com/financesociety-nitj/Indicator-Library" target="_blank" style="color: var(--accent);">financesociety-nitj/Indicator-Library</a> on GitHub.</li>
+            <li>Go to <a href="https://github.com/financesociety-nitj/IndiStat" target="_blank" style="color: var(--accent);">financesociety-nitj/IndiStat</a> on GitHub.</li>
             <li>Click the <strong>Fork</strong> button in the top-right corner. Keep the default settings and click <strong>Create fork</strong>.</li>
             <li>Now clone <em>your fork</em> to your laptop:</li>
           </ol>
@@ -746,11 +747,11 @@ python -m indicator_library TSLA --start 2024-01-01 --end 2024-01-05 --format re
               <button class="copy-btn" onclick="copyCode(this)">Copy</button>
             </div>
             <pre><code># Replace &lt;your-username&gt; with your actual GitHub username
-git clone https://github.com/&lt;your-username&gt;/Indicator-Library.git
-cd Indicator-Library
+git clone https://github.com/&lt;your-username&gt;/IndiStat.git
+cd IndiStat
 
 # Add the official repository as 'upstream' so you can sync updates later
-git remote add upstream https://github.com/financesociety-nitj/Indicator-Library.git
+git remote add upstream https://github.com/financesociety-nitj/IndiStat.git
 
 # Verify remotes
 git remote -v</code></pre>
@@ -1010,9 +1011,9 @@ git push -u origin feat/rsi-indicator</code></pre>
             <h3 class="step-title" style="margin: 0;">Open Your Pull Request (PR)</h3>
           </div>
           <ol>
-            <li>Navigate to your fork repository on GitHub: <code>https://github.com/&lt;your-username&gt;/Indicator-Library</code>.</li>
+            <li>Navigate to your fork repository on GitHub: <code>https://github.com/&lt;your-username&gt;/IndiStat</code>.</li>
             <li>You will see a green banner: <strong>"feat/rsi-indicator had recent pushes"</strong>. Click <strong>Compare & pull request</strong>.</li>
-            <li>Set the base repository to <code>financesociety-nitj/Indicator-Library</code> and base branch to <code>main</code>.</li>
+            <li>Set the base repository to <code>financesociety-nitj/IndiStat</code> and base branch to <code>main</code>.</li>
             <li>Fill out the PR title and description using this format:</li>
           </ol>
 
@@ -1237,9 +1238,10 @@ Implemented the Relative Strength Index (RSI) indicator using Wilder's exponenti
       Created with ❤️ for students by the <strong>Technical Department, Finance Society, NIT Jalandhar</strong>.
     </p>
     <p style="margin-top: 0.5rem;">
-      <a href="https://github.com/financesociety-nitj/Indicator-Library" target="_blank" rel="noopener noreferrer">GitHub Repository</a> •
-      <a href="https://github.com/financesociety-nitj/Indicator-Library/issues" target="_blank" rel="noopener noreferrer">Open Issues</a> •
-      <a href="https://github.com/financesociety-nitj/Indicator-Library/pulls" target="_blank" rel="noopener noreferrer">Pull Requests</a>
+      <a href="https://github.com/financesociety-nitj/IndiStat" target="_blank" rel="noopener noreferrer">GitHub Repository</a> •
+      <a href="https://github.com/financesociety-nitj/IndiStat/issues" target="_blank" rel="noopener noreferrer">Open Issues</a> •
+      <a href="https://github.com/financesociety-nitj/IndiStat/pulls" target="_blank" rel="noopener noreferrer">Pull Requests</a>
+
     </p>
   </footer>
 
