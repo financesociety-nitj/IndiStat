@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Contributor Guide & API Docs | Finance Society NITJ Indicator-Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0e17;
+      --bg-secondary: #111827;
+      --bg-tertiary: #1f2937;
+      --bg-card: rgba(17, 24, 39, 0.7);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(56, 189, 248, 0.25);
+      --accent: #38bdf8;
+      --accent-glow: #0284c7;
+      --accent-green: #34d399;
+      --accent-purple: #a855f7;
+      --accent-amber: #fbbf24;
+      --text-primary: #f9fafb;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --code-bg: #030712;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.65;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Subtle background grid */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+                  radial-gradient(circle at 85% 70%, rgba(168, 85, 247, 0.07) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(10, 14, 23, 0.85);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo-badge {
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      color: #030712;
+      font-weight: 800;
+      font-size: 0.9rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-title {
+      font-weight: 700;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-sub {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.15rem 0.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 9999px;
+      border: 1px solid var(--border-color);
+    }
+
+    .header-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .header-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .header-link:hover {
+      color: var(--accent);
+    }
+
+    .btn-github {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-primary);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--border-color);
+      transition: all 0.2s;
+    }
+
+    .btn-github:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .layout-container {
+      display: flex;
+      max-width: 1440px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      flex: 1;
+    }
+
+    /* Sidebar Navigation */
+    aside.sidebar {
+      width: 290px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 73px;
+      height: calc(100vh - 73px);
+      overflow-y: auto;
+      padding: 2rem 1.5rem;
+      border-right: 1px solid var(--border-color);
+    }
+
+    .sidebar-section-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .sidebar-section-title:first-child {
+      margin-top: 0;
+    }
+
+    .sidebar-nav {
+      list-style: none;
+    }
+
+    .sidebar-nav li {
+      margin-bottom: 0.35rem;
+    }
+
+    .sidebar-nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.65rem;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .sidebar-nav a:hover {
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    .sidebar-nav a.active {
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.12);
+      font-weight: 600;
+    }
+
+    .nav-num {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Main Content Area */
+    main.content {
+      flex: 1;
+      padding: 3rem 4rem;
+      max-width: 980px;
+      min-width: 0;
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-bottom: 3.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 780px;
+      line-height: 1.7;
+    }
+
+    /* Cards & Steps */
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      position: relative;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .step-pill {
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      color: #030712;
+      font-weight: 800;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .step-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    h2 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1.25rem 0;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 1.5rem 0 0.75rem 0;
+      color: #e2e8f0;
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    ul, ol {
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    strong {
+      color: #f1f5f9;
+    }
+
+    /* Callouts */
+    .callout {
+      border-left: 4px solid var(--accent);
+      background: rgba(56, 189, 248, 0.06);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 10px 10px 0;
+      margin: 1.25rem 0;
+    }
+
+    .callout-success {
+      border-left-color: var(--accent-green);
+      background: rgba(52, 211, 153, 0.06);
+    }
+
+    .callout-warning {
+      border-left-color: var(--accent-amber);
+      background: rgba(251, 191, 36, 0.06);
+    }
+
+    .callout-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Code Blocks */
+    .code-container {
+      position: relative;
+      margin: 1.25rem 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      background: var(--code-bg);
+    }
+
+    .code-header {
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 0.5rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    pre {
+      padding: 1.25rem 1.25rem;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: #e2e8f0;
+    }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.88em;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      color: #38bdf8;
+    }
+
+    pre code {
+      background: transparent;
+      padding: 0;
+      border-radius: 0;
+      color: inherit;
+    }
+
+    .copy-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+      border-radius: 5px;
+      padding: 0.25rem 0.55rem;
+      font-size: 0.72rem;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--text-primary);
+    }
+
+    /* Tables */
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.85rem 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--text-secondary);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Indicator Cards Grid */
+    .indicators-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .indicator-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.25rem;
+      transition: all 0.2s;
+    }
+
+    .indicator-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .indicator-type {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    .type-momentum { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+    .type-trend { background: rgba(52, 211, 153, 0.15); color: #34d399; }
+    .type-volatility { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+    .type-volume { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+
+    .indicator-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      color: #fff;
+    }
+
+    .indicator-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      background: rgba(10, 14, 23, 0.95);
+      position: relative;
+      z-index: 10;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 960px) {
+      aside.sidebar {
+        display: none;
+      }
+      main.content {
+        padding: 2rem 1.5rem;
+      }
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header>
+    <a href="#" class="brand">
+      <span class="logo-badge">NITJ</span>
+      <span class="brand-title">Finance Society <span class="brand-sub">Indicator Library</span></span>
+    </a>
+    <div class="header-links">
+      <a href="#quickstart" class="header-link">Quickstart</a>
+      <a href="#data-api" class="header-link">Data API</a>
+      <a href="#step-by-step" class="header-link">PR Guide</a>
+      <a href="#backlog" class="header-link">Indicators Backlog</a>
+      <a href="https://github.com/financesociety-nitj/Indicator-Library" target="_blank" rel="noopener noreferrer" class="btn-github">
+        <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+        </svg>
+        GitHub Repo
+      </a>
+    </div>
+  </header>
+
+  <!-- Layout Container -->
+  <div class="layout-container">
+
+    <!-- Sticky Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-section-title">Getting Started</div>
+      <ul class="sidebar-nav">
+        <li><a href="#welcome"><span class="nav-num">01.</span> Welcome & Goals</a></li>
+        <li><a href="#prerequisites"><span class="nav-num">02.</span> Prerequisites</a></li>
+        <li><a href="#architecture"><span class="nav-num">03.</span> Library Architecture</a></li>
+      </ul>
+
+      <div class="sidebar-section-title">Data Module</div>
+      <ul class="sidebar-nav">
+        <li><a href="#data-api"><span class="nav-num">04.</span> OHLCV API Docs</a></li>
+        <li><a href="#data-examples"><span class="nav-num">05.</span> Code Samples</a></li>
+      </ul>
+
+      <div class="sidebar-section-title">Contributor Workflow</div>
+      <ul class="sidebar-nav">
+        <li><a href="#step-1"><span class="nav-num">06.</span> 1. Fork & Clone</a></li>
+        <li><a href="#step-2"><span class="nav-num">07.</span> 2. Environment Setup</a></li>
+        <li><a href="#step-3"><span class="nav-num">08.</span> 3. Create Feature Branch</a></li>
+        <li><a href="#step-4"><span class="nav-num">09.</span> 4. Implement Indicator (RSI)</a></li>
+        <li><a href="#step-5"><span class="nav-num">10.</span> 5. Write Unit Tests</a></li>
+        <li><a href="#step-6"><span class="nav-num">11.</span> 6. Commit & Push</a></li>
+        <li><a href="#step-7"><span class="nav-num">12.</span> 7. Open Pull Request</a></li>
+      </ul>
+
+      <div class="sidebar-section-title">Reference</div>
+      <ul class="sidebar-nav">
+        <li><a href="#backlog"><span class="nav-num">13.</span> Indicator Ideas Backlog</a></li>
+        <li><a href="#faq"><span class="nav-num">14.</span> Common Pitfalls & FAQ</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+
+      <!-- Hero Banner -->
+      <section class="hero" id="welcome">
+        <div class="hero-badge">🚀 Student Contributor Program • Open Source 2026</div>
+        <h1>Learn Open Source by Building Financial Indicators</h1>
+        <p>
+          Welcome to the official <strong>Contributor Guide & Documentation</strong> for NITJ's Finance Society Indicator Library.
+          Here, you will learn the end-to-end Git & GitHub workflow used by software engineers and quant developers worldwide:
+          from forking and branching, to writing pandas-based technical indicators, testing with pytest, and submitting production-ready Pull Requests (PRs).
+        </p>
+      </section>
+
+      <!-- Section: Why contribute -->
+      <section id="prerequisites" class="step-card">
+        <div class="step-header">
+          <span class="step-pill">Basics</span>
+          <h2 class="step-title" style="margin: 0;">What You Will Learn</h2>
+        </div>
+        <p>By contributing an indicator to this repository, you will gain:</p>
+        <ul>
+          <li><strong>Real-world Git & GitHub mastery:</strong> Forking, upstream remotes, branching, commit hygiene, and handling Pull Request reviews.</li>
+          <li><strong>Quantitative Finance experience:</strong> Understanding how market price series work and calculating real mathematical indicators (RSI, MACD, Bollinger Bands, ATR, etc.).</li>
+          <li><strong>Python & Pandas skills:</strong> Writing vectorised data transformations and writing test suites with <code>pytest</code>.</li>
+          <li><strong>A verifiable public portfolio item:</strong> Your commits and merged PRs will be publicly visible on your GitHub profile.</li>
+        </ul>
+      </section>
+
+      <!-- Section: Architecture & Raw Data API -->
+      <section id="data-api">
+        <h2>📊 The Raw Data Engine (`indicator_library.data`)</h2>
+        <p>
+          Every technical indicator needs historical price data to compute values. To ensure all indicators receive clean, consistent inputs, our library provides a centralized data engine powered by <code>yfinance</code>.
+        </p>
+
+        <div class="callout callout-success">
+          <div class="callout-title">💡 The Pure OHLCV Guarantee</div>
+          Standard Yahoo Finance downloads often contain extraneous columns like <em>Dividends, Stock Splits,</em> or <em>Adj Close</em>.
+          Our module filters these out automatically, delivering strictly <strong>Open, High, Low, Close, Volume (OHLCV)</strong> data.
+        </div>
+
+        <h3>API Function: <code>get_stock_data(...)</code></h3>
+        <p>Also aliased as <code>get_raw_ohlcv</code> and <code>get_raw_data</code>.</p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span>Python</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>from indicator_library import get_stock_data
+
+# Fetch daily OHLCV data for any stock
+df = get_stock_data(
+    stock="AAPL",                  # Stock symbol (e.g., 'AAPL', 'RELIANCE.NS', 'TSLA')
+    start_date="2024-01-01",        # Supports 'YYYY-MM-DD', datetime.date, or datetime
+    end_date="2024-01-31",
+    interval="1d",                 # '1d', '1h', '15m', etc.
+    as_format="dataframe"          # 'dataframe' (default), 'records', 'dict', 'json'
+)
+
+print(df.head())</code></pre>
+        </div>
+
+        <h3>Accepted Date Formats</h3>
+        <p>The <code>start_date</code> and <code>end_date</code> parameters are flexible and accept any of the following:</p>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Format</th>
+                <th>Example</th>
+                <th>Usage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>String (ISO / Standard)</strong></td>
+                <td><code>"2024-01-01"</code></td>
+                <td><code>start_date="2024-01-01"</code></td>
+              </tr>
+              <tr>
+                <td><strong>Python <code>datetime.date</code></strong></td>
+                <td><code>datetime.date(2024, 1, 1)</code></td>
+                <td>Ideal for dynamic calculations using <code>timedelta</code></td>
+              </tr>
+              <tr>
+                <td><strong>Tuple range</strong></td>
+                <td><code>date_range=("2024-01-01", "2024-01-31")</code></td>
+                <td>Convenience parameter unpacking both dates</td>
+              </tr>
+              <tr>
+                <td><strong>Pandas Timestamp</strong></td>
+                <td><code>pd.Timestamp("2024-01-01")</code></td>
+                <td>Native pandas timestamp compatibility</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="code-container" id="data-examples">
+          <div class="code-header">
+            <span>Terminal CLI Usage</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code># You can also fetch and test data directly from the terminal!
+python data.py AAPL --start 2024-01-01 --end 2024-01-15
+
+# Fetch Indian stock data (NSE)
+python data.py RELIANCE.NS --start 2024-01-01 --end 2024-01-15 --interval 1d
+
+# Output as JSON records for quick inspection
+python -m indicator_library TSLA --start 2024-01-01 --end 2024-01-05 --format records</code></pre>
+        </div>
+      </section>
+
+      <!-- Section: Step-by-Step PR Workflow -->
+      <section id="step-by-step">
+        <h2>🛠️ Step-by-Step Student PR Guide</h2>
+        <p>Follow these exact steps from start to finish to submit your first Pull Request!</p>
+
+        <!-- Step 1 -->
+        <div class="step-card" id="step-1">
+          <div class="step-header">
+            <span class="step-pill">Step 1</span>
+            <h3 class="step-title" style="margin: 0;">Fork & Clone the Repository</h3>
+          </div>
+          <p>
+            You cannot push directly to the main organization repository. Instead, you create a personal copy called a <strong>Fork</strong>.
+          </p>
+          <ol>
+            <li>Go to <a href="https://github.com/financesociety-nitj/Indicator-Library" target="_blank" style="color: var(--accent);">financesociety-nitj/Indicator-Library</a> on GitHub.</li>
+            <li>Click the <strong>Fork</strong> button in the top-right corner. Keep the default settings and click <strong>Create fork</strong>.</li>
+            <li>Now clone <em>your fork</em> to your laptop:</li>
+          </ol>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Terminal</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code># Replace &lt;your-username&gt; with your actual GitHub username
+git clone https://github.com/&lt;your-username&gt;/Indicator-Library.git
+cd Indicator-Library
+
+# Add the official repository as 'upstream' so you can sync updates later
+git remote add upstream https://github.com/financesociety-nitj/Indicator-Library.git
+
+# Verify remotes
+git remote -v</code></pre>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card" id="step-2">
+          <div class="step-header">
+            <span class="step-pill">Step 2</span>
+            <h3 class="step-title" style="margin: 0;">Set Up Your Python Environment</h3>
+          </div>
+          <p>Always work inside an isolated virtual environment to prevent package version conflicts:</p>
+          <div class="code-container">
+            <div class="code-header">
+              <span>Terminal</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code># 1. Create a virtual environment named .venv
+python3 -m venv .venv
+
+# 2. Activate the virtual environment
+# On macOS/Linux:
+source .venv/bin/activate
+# On Windows (Command Prompt / PowerShell):
+# .venv\Scripts\activate
+
+# 3. Upgrade pip and install dependencies
+pip install --upgrade pip
+pip install -r requirements.txt
+pip install -e ".[dev]"</code></pre>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card" id="step-3">
+          <div class="step-header">
+            <span class="step-pill">Step 3</span>
+            <h3 class="step-title" style="margin: 0;">Create a Dedicated Feature Branch</h3>
+          </div>
+          <div class="callout callout-warning">
+            <div class="callout-title">⚠️ Never code on the main branch!</div>
+            Always branch off <code>main</code> into a new branch named after your feature (e.g., <code>feat/rsi-indicator</code>).
+          </div>
+          <div class="code-container">
+            <div class="code-header">
+              <span>Terminal</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code># Make sure you are on main and up to date
+git checkout main
+git pull upstream main
+
+# Create and switch to your feature branch
+git checkout -b feat/rsi-indicator</code></pre>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-card" id="step-4">
+          <div class="step-header">
+            <span class="step-pill">Step 4</span>
+            <h3 class="step-title" style="margin: 0;">Implement Your Indicator (Case Study: RSI)</h3>
+          </div>
+          <p>
+            Let's walk through implementing the <strong>Relative Strength Index (RSI)</strong> indicator as a concrete example.
+          </p>
+          
+          <div class="callout">
+            <div class="callout-title">📐 The Math Behind RSI</div>
+            <p>1. Calculate day-to-day price differences: <code>Δ = Close[t] - Close[t-1]</code></p>
+            <p>2. Separate into Gains (<code>Δ if Δ &gt; 0 else 0</code>) and Losses (<code>|Δ| if Δ &lt; 0 else 0</code>)</p>
+            <p>3. Calculate the rolling exponential/smoothed average of Gains and Losses over <code>n</code> periods (typically 14).</p>
+            <p>4. Compute Relative Strength: <code>RS = AvgGain / AvgLoss</code></p>
+            <p>5. Compute RSI: <code>RSI = 100 - (100 / (1 + RS))</code></p>
+          </div>
+
+          <p>Create a new file, for example <code>indicator_library/rsi.py</code>:</p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>indicator_library/rsi.py</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>"""
+Relative Strength Index (RSI) Indicator Implementation.
+"""
+
+from typing import Union
+import pandas as pd
+import numpy as np
+
+
+def calculate_rsi(
+    data: pd.DataFrame,
+    period: int = 14,
+    price_col: str = "Close",
+) -> pd.Series:
+    """
+    Calculate the Relative Strength Index (RSI) for a given OHLCV DataFrame.
+
+    Parameters
+    ----------
+    data : pd.DataFrame
+        OHLCV DataFrame containing at least the `price_col` (e.g. 'Close').
+    period : int, default 14
+        The lookback window for RSI calculation. Must be positive.
+    price_col : str, default 'Close'
+        The price column to use for calculations.
+
+    Returns
+    -------
+    pd.Series
+        Series containing the RSI values oscillating between 0 and 100.
+    """
+    if period &lt;= 0:
+        raise ValueError("period must be an integer greater than 0.")
+
+    if price_col not in data.columns:
+        raise ValueError(f"Required price column '{price_col}' missing from DataFrame.")
+
+    # Calculate price change
+    delta = data[price_col].diff()
+
+    # Separate gains and losses
+    gain = delta.clip(lower=0)
+    loss = -delta.clip(upper=0)
+
+    # Use exponential moving average (Wilder's Smoothing)
+    avg_gain = gain.ewm(alpha=1 / period, min_periods=period, adjust=False).mean()
+    avg_loss = loss.ewm(alpha=1 / period, min_periods=period, adjust=False).mean()
+
+    # Calculate Relative Strength (RS)
+    rs = avg_gain / avg_loss
+
+    # Calculate RSI
+    rsi = 100.0 - (100.0 / (1.0 + rs))
+
+    # Where avg_loss == 0, RSI is 100
+    rsi = rsi.where(avg_loss != 0, 100.0)
+    # Where avg_gain == 0 and avg_loss == 0, RSI is 50
+    rsi = rsi.where(~((avg_gain == 0) & (avg_loss == 0)), 50.0)
+
+    rsi.name = f"RSI_{period}"
+    return rsi</code></pre>
+          </div>
+
+          <p>Export your indicator in <code>indicator_library/__init__.py</code>:</p>
+          <div class="code-container">
+            <div class="code-header">
+              <span>indicator_library/__init__.py</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>from .data import get_stock_data, get_raw_ohlcv, get_raw_data, OHLCV_COLUMNS
+from .rsi import calculate_rsi
+
+__all__ = [
+    "get_stock_data",
+    "get_raw_ohlcv",
+    "get_raw_data",
+    "OHLCV_COLUMNS",
+    "calculate_rsi",
+]</code></pre>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step-card" id="step-5">
+          <div class="step-header">
+            <span class="step-pill">Step 5</span>
+            <h3 class="step-title" style="margin: 0;">Write Unit Tests with Pytest</h3>
+          </div>
+          <p>
+            No PR is merged without tests! Create a test file, e.g. <code>tests/test_rsi.py</code>, to verify calculations and handle edge cases:
+          </p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>tests/test_rsi.py</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>import pytest
+import pandas as pd
+import numpy as np
+from indicator_library.rsi import calculate_rsi
+
+
+def test_rsi_bounds():
+    # Synthetic steadily rising prices should yield RSI close to 100
+    rising_prices = pd.DataFrame({"Close": [float(i) for i in range(1, 30)]})
+    rsi = calculate_rsi(rising_prices, period=14)
+
+    # Valid values must be between 0 and 100
+    valid_rsi = rsi.dropna()
+    assert (valid_rsi &gt;= 0).all() and (valid_rsi &lt;= 100).all()
+    # After consecutive gains, RSI should be high (> 90)
+    assert valid_rsi.iloc[-1] &gt; 90
+
+
+def test_rsi_invalid_period():
+    df = pd.DataFrame({"Close": [10.0, 11.0, 12.0]})
+    with pytest.raises(ValueError, match="period must be"):
+        calculate_rsi(df, period=0)
+
+
+def test_rsi_missing_column():
+    df = pd.DataFrame({"Open": [10.0, 11.0, 12.0]})
+    with pytest.raises(ValueError, match="Required price column"):
+        calculate_rsi(df, price_col="Close")</code></pre>
+          </div>
+
+          <p>Run your tests locally and make sure everything passes:</p>
+          <div class="code-container">
+            <div class="code-header">
+              <span>Terminal</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code># Run all tests
+pytest
+
+# Run only your new test file with verbose output
+pytest tests/test_rsi.py -v</code></pre>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="step-card" id="step-6">
+          <div class="step-header">
+            <span class="step-pill">Step 6</span>
+            <h3 class="step-title" style="margin: 0;">Commit & Push Your Work</h3>
+          </div>
+          <p>Check changed files and make clean, atomic commits with conventional commit messages:</p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Terminal</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code># Check status
+git status
+
+# Stage the files you created or edited
+git add indicator_library/rsi.py indicator_library/__init__.py tests/test_rsi.py
+
+# Commit with a clear descriptive message
+git commit -m "feat: implement Relative Strength Index (RSI) indicator"
+
+# Push the branch to YOUR fork on GitHub
+git push -u origin feat/rsi-indicator</code></pre>
+          </div>
+        </div>
+
+        <!-- Step 7 -->
+        <div class="step-card" id="step-7">
+          <div class="step-header">
+            <span class="step-pill">Step 7</span>
+            <h3 class="step-title" style="margin: 0;">Open Your Pull Request (PR)</h3>
+          </div>
+          <ol>
+            <li>Navigate to your fork repository on GitHub: <code>https://github.com/&lt;your-username&gt;/Indicator-Library</code>.</li>
+            <li>You will see a green banner: <strong>"feat/rsi-indicator had recent pushes"</strong>. Click <strong>Compare & pull request</strong>.</li>
+            <li>Set the base repository to <code>financesociety-nitj/Indicator-Library</code> and base branch to <code>main</code>.</li>
+            <li>Fill out the PR title and description using this format:</li>
+          </ol>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>PR Description Template</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>## 🚀 Indicator Description
+Implemented the Relative Strength Index (RSI) indicator using Wilder's exponential smoothing method.
+
+### 📐 Formula / Math Reference
+- RSI = 100 - (100 / (1 + RS))
+- RS = Average Gain / Average Loss over n periods (default: 14)
+
+### 📁 Files Added / Modified
+- `indicator_library/rsi.py`: Core calculation function `calculate_rsi`.
+- `indicator_library/__init__.py`: Exported `calculate_rsi`.
+- `tests/test_rsi.py`: Added 3 unit tests verifying bounds, input validation, and expected values.
+
+### 🧪 Verification
+- Ran `pytest`: all tests passed (100% pass rate).
+- Tested with real OHLCV data fetched using `get_stock_data("AAPL", start_date="2024-01-01", end_date="2024-03-01")`.</code></pre>
+          </div>
+
+          <p>Click <strong>Create pull request</strong>! 🎉 A maintainer will review your code, provide constructive feedback, or merge it!</p>
+        </div>
+      </section>
+
+      <!-- Section: Indicators Backlog for Students -->
+      <section id="backlog">
+        <h2>💡 Indicators You Can Claim & Implement</h2>
+        <p>
+          Pick an indicator below that is not yet implemented, open an issue on GitHub to claim it, and build your PR!
+        </p>
+
+        <div class="indicators-grid">
+          <!-- Momentum -->
+          <div class="indicator-card">
+            <span class="indicator-type type-momentum">Momentum</span>
+            <h4>RSI (Relative Strength Index)</h4>
+            <p>Measures the speed and change of price movements between 0 and 100.</p>
+          </div>
+
+          <div class="indicator-card">
+            <span class="indicator-type type-momentum">Momentum</span>
+            <h4>Stochastic Oscillator (%K, %D)</h4>
+            <p>Compares a stock's closing price to its price range over a specified period.</p>
+          </div>
+
+          <div class="indicator-card">
+            <span class="indicator-type type-momentum">Momentum</span>
+            <h4>Williams %R</h4>
+            <p>Reflects the level of the close relative to the highest high for the lookback period.</p>
+          </div>
+
+          <div class="indicator-card">
+            <span class="indicator-type type-momentum">Momentum</span>
+            <h4>Rate of Change (ROC)</h4>
+            <p>Calculates the percentage difference between the current price and price n-periods ago.</p>
+          </div>
+
+          <!-- Trend -->
+          <div class="indicator-card">
+            <span class="indicator-type type-trend">Trend</span>
+            <h4>MACD & Signal Line</h4>
+            <p>Moving Average Convergence Divergence with exponential MACD line and signal line.</p>
+          </div>
+
+          <div class="indicator-card">
+            <span class="indicator-type type-trend">Trend</span>
+            <h4>Moving Averages (SMA, EMA, WMA)</h4>
+            <p>Simple, Exponential, and Weighted Moving Averages across configurable timeframes.</p>
+          </div>
+
+          <div class="indicator-card">
+            <span class="indicator-type type-trend">Trend</span>
+            <h4>Supertrend Indicator</h4>
+            <p>Combines ATR with median price to plot trend-following support and resistance bands.</p>
+          </div>
+
+          <div class="indicator-card">
+            <span class="indicator-type type-trend">Trend</span>
+            <h4>Average Directional Index (ADX)</h4>
+            <p>Quantifies trend strength (+DI, -DI) regardless of trend direction.</p>
+          </div>
+
+          <!-- Volatility -->
+          <div class="indicator-card">
+            <span class="indicator-type type-volatility">Volatility</span>
+            <h4>Bollinger Bands (Upper, Mid, Lower)</h4>
+            <p>Bands plotted at standard deviation levels above and below a moving average.</p>
+          </div>
+
+          <div class="indicator-card">
+            <span class="indicator-type type-volatility">Volatility</span>
+            <h4>Average True Range (ATR)</h4>
+            <p>Measures market volatility by decomposing the entire range of an asset price.</p>
+          </div>
+
+          <div class="indicator-card">
+            <span class="indicator-type type-volatility">Volatility</span>
+            <h4>Keltner Channels</h4>
+            <p>Volatility-based bands placed above and below an exponential moving average using ATR.</p>
+          </div>
+
+          <div class="indicator-card">
+            <span class="indicator-type type-volatility">Volatility</span>
+            <h4>Donchian Channels</h4>
+            <p>Formed by taking the highest high and lowest low of the last n periods.</p>
+          </div>
+
+          <!-- Volume -->
+          <div class="indicator-card">
+            <span class="indicator-type type-volume">Volume</span>
+            <h4>On-Balance Volume (OBV)</h4>
+            <p>Uses volume flow to predict changes in stock price.</p>
+          </div>
+
+          <div class="indicator-card">
+            <span class="indicator-type type-volume">Volume</span>
+            <h4>Volume Weighted Average Price (VWAP)</h4>
+            <p>Trading benchmark giving the average price a security traded at throughout the session.</p>
+          </div>
+
+          <div class="indicator-card">
+            <span class="indicator-type type-volume">Volume</span>
+            <h4>Chaikin Money Flow (CMF)</h4>
+            <p>Measures the amount of Money Flow Volume over a given period.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: FAQ & Tips -->
+      <section id="faq" class="step-card">
+        <div class="step-header">
+          <span class="step-pill">FAQ</span>
+          <h2 class="step-title" style="margin: 0;">Review Tips & Common Pitfalls</h2>
+        </div>
+        <ul>
+          <li><strong>Never mutate inputs:</strong> Do not do <code>data['rsi'] = ...</code> on the argument passed in. Always do <code>df = data.copy()</code> or compute standalone Series.</li>
+          <li><strong>Check your git config:</strong> Ensure your Git email matches your GitHub account so commits show up on your profile.</li>
+          <li><strong>Keep PRs focused:</strong> One indicator per PR. Don't bundle 5 different indicators in a single PR. Small, clean PRs get reviewed and merged quickly.</li>
+          <li><strong>Sync with upstream:</strong> If other people's PRs were merged, run <code>git pull upstream main</code> on your <code>main</code> branch to stay updated!</li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      Created with ❤️ for students by the <strong>Technical Department, Finance Society, NIT Jalandhar</strong>.
+    </p>
+    <p style="margin-top: 0.5rem;">
+      <a href="https://github.com/financesociety-nitj/Indicator-Library" target="_blank" rel="noopener noreferrer">GitHub Repository</a> •
+      <a href="https://github.com/financesociety-nitj/Indicator-Library/issues" target="_blank" rel="noopener noreferrer">Open Issues</a> •
+      <a href="https://github.com/financesociety-nitj/Indicator-Library/pulls" target="_blank" rel="noopener noreferrer">Pull Requests</a>
+    </p>
+  </footer>
+
+  <script>
+    // Copy code button script
+    function copyCode(button) {
+      const codeBlock = button.closest('.code-container').querySelector('pre code');
+      if (codeBlock) {
+        navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+          const originalText = button.innerText;
+          button.innerText = "Copied!";
+          button.style.color = "#34d399";
+          setTimeout(() => {
+            button.innerText = originalText;
+            button.style.color = "";
+          }, 2000);
+        });
+      }
+    }
+
+    // Scrollspy for sidebar links
+    window.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('.sidebar-nav a');
+      const sections = [];
+
+      links.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          const el = document.querySelector(href);
+          if (el) sections.push({ link, el });
+        }
+      });
+
+      window.addEventListener('scroll', () => {
+        const scrollPos = window.scrollY + 120;
+        for (let i = sections.length - 1; i >= 0; i--) {
+          if (scrollPos >= sections[i].el.offsetTop) {
+            links.forEach(l => l.classList.remove('active'));
+            sections[i].link.classList.add('active');
+            break;
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
