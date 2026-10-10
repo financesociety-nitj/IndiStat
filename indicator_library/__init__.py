@@ -14,10 +14,20 @@ from .volatility import (
     bollinger_bands,
 )
 
+from .macd import (
+    calculate_macd,
+    macd,
+    moving_average_convergence_divergence,
+)
+
 __all__ = [
     "OHLCV_COLUMNS",
     "get_raw_data",
     "get_raw_ohlcv",
     "get_stock_data",
-    "bollinger_bands"
+    "bollinger_bands",
+    "calculate_macd",
+    "macd",
+    "moving_average_convergence_divergence",
 ]
+
