@@ -18,6 +18,12 @@ from .rsi import (
     relative_strength_index,
 )
 
+from .macd import (
+    calculate_macd,
+    macd,
+    moving_average_convergence_divergence,
+)
+
 __all__ = [
     "OHLCV_COLUMNS",
     "get_raw_data",
@@ -26,5 +32,7 @@ __all__ = [
     "bollinger_bands",
     "calculate_rsi",
     "relative_strength_index",
+    "calculate_macd",
+    "macd",
+    "moving_average_convergence_divergence",
 ]
-
