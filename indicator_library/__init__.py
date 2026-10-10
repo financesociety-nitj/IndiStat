@@ -2,7 +2,6 @@
 IndiStat - Open Source Library of Quantitative Indicators for Technical Dept., Finance Society, NITJ.
 """
 
-
 from .data import (
     OHLCV_COLUMNS,
     get_raw_data,
@@ -12,6 +11,11 @@ from .data import (
 
 from .volatility import (
     bollinger_bands,
+)
+
+from .rsi import (
+    calculate_rsi,
+    relative_strength_index,
 )
 
 from .macd import (
@@ -26,8 +30,9 @@ __all__ = [
     "get_raw_ohlcv",
     "get_stock_data",
     "bollinger_bands",
+    "calculate_rsi",
+    "relative_strength_index",
     "calculate_macd",
     "macd",
     "moving_average_convergence_divergence",
 ]
-
