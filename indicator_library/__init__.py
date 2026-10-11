@@ -10,6 +10,7 @@ from .data import (
 )
 
 from .volatility import (
+    average_true_range,
     bollinger_bands,
 )
 
@@ -29,6 +30,7 @@ __all__ = [
     "get_raw_data",
     "get_raw_ohlcv",
     "get_stock_data",
+    "average_true_range",
     "bollinger_bands",
     "calculate_rsi",
     "relative_strength_index",
@@ -36,3 +38,4 @@ __all__ = [
     "macd",
     "moving_average_convergence_divergence",
 ]
+
